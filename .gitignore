@@ -1,6 +1,5 @@
 # Project Specific
 /data
-*.txt
 *.pkl
 
 # exclude data from source control by default
