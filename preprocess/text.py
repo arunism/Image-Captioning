@@ -3,7 +3,7 @@ import string
 
 
 class CleanImageDescription:
-    def __init__(self, datapath: str,):
+    def __init__(self, datapath: str):
         self.datapath = datapath
 
     def read_descriptions(self):
@@ -22,10 +22,13 @@ class CleanImageDescription:
             descriptions[filename].append(desc[0])
         return descriptions
 
-    def clean_punctuations(self, sentence):
-        cleanr = re.compile('<.*?>')
-        sentence = re.sub(cleanr, ' ', sentence)
-        sentence = re.sub(r'[?|$|.|!]', r'', sentence)
-        sentence = re.sub(r'[.|,|)|(|\|/]', r' ', sentence)
-        sentence = re.sub(' +', ' ', sentence)
-        return sentence
+    def clean_descriptions(self):
+        desc = self.read_descriptions()
+        for filename, descriptions in desc.items():
+            for i in range(len(descriptions)):
+                description = descriptions[i]
+                table = str.maketrans('', '', string.punctuation)
+                description = description.translate(table).lower()
+                description = re.sub(' +', ' ', description).lstrip().rstrip()
+                descriptions[i] = description
+        return desc
