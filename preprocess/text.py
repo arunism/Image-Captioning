@@ -3,10 +3,12 @@ import string
 
 
 class CleanImageDescription:
-    def __init__(self, datapath: str,):
+    def __init__(self, datapath: str):
         self.datapath = datapath
+        self.descriptions = self.read_descriptions()
+        self.vocab = set()
 
-    def read_descriptions(self):
+    def read_descriptions(self) -> dict:
         file = open(self.datapath, 'r')
         text = file.read()
         file.close()
@@ -22,10 +24,17 @@ class CleanImageDescription:
             descriptions[filename].append(desc[0])
         return descriptions
 
-    def clean_punctuations(self, sentence):
-        cleanr = re.compile('<.*?>')
-        sentence = re.sub(cleanr, ' ', sentence)
-        sentence = re.sub(r'[?|$|.|!]', r'', sentence)
-        sentence = re.sub(r'[.|,|)|(|\|/]', r' ', sentence)
-        sentence = re.sub(' +', ' ', sentence)
-        return sentence
+    def clean_descriptions(self) -> dict:
+        for filename, descriptions in self.descriptions.items():
+            for i in range(len(descriptions)):
+                description = descriptions[i]
+                table = str.maketrans('', '', string.punctuation)
+                description = description.translate(table).lower()
+                description = re.sub(' +', ' ', description).lstrip().rstrip()
+                descriptions[i] = description
+        return self.descriptions
+
+    def create_vocab(self) -> set:
+        for descriptions in self.descriptions.values():
+            [self.vocab.update(description.split()) for description in descriptions]
+        return self.vocab
