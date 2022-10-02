@@ -31,3 +31,15 @@ class ResnetDecoder(nn.Module):
         hidden, _ = self.lstm(embeddings)
         output = self.fc(hidden)
         return output
+
+
+class ResnetModel(nn.Module):
+    def __init__(self, vocab_size):
+        super(ResnetModel, self).__init__()
+        self.encoder = ResnetEncoder()
+        self.decoder = ResnetDecoder(vocab_size)
+
+    def forward(self, captions, images):
+        features = self.encoder(images)
+        outputs = self.decoder(captions, features)
+        return outputs
