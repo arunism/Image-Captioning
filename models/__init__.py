@@ -1,3 +1,3 @@
-from models.resnet_lstm import ResnetEncoder
+from models.resnet_lstm import ResnetModel
 
-__all__ = ['ResnetEncoder']
+__all__ = ['ResnetModel']

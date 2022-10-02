@@ -1,7 +1,9 @@
-LEARNING_RATE = 0.001
+LR = 0.001  # Learning Rate
 EPOCHS = 10
 BATCH_SIZE = 32
 EMBED_SIZE = 512
 HIDDEN_SIZE = 512
 DROPOUT = 0.4
+OPTIMIZER = 'adam'  # Available: adam, adadelta, adagrad, rmsprop, sgd
+DATA_PATH = 'dataset/'
 OUTPUT_PATH = 'results/'
