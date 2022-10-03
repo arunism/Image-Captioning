@@ -26,3 +26,6 @@ class Train:
 
     def train_epoch(self):
         pass
+
+    def train(self):
+        pass
