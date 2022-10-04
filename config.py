@@ -5,5 +5,6 @@ EMBED_SIZE = 512
 HIDDEN_SIZE = 512
 DROPOUT = 0.4
 OPTIMIZER = 'adam'  # Available: adam, adadelta, adagrad, rmsprop, sgd
-DATA_PATH = 'dataset/'
 OUTPUT_PATH = 'results/'
+IMAGE_DATA_PATH = 'data/Images/'
+TEXT_DATA_PATH = 'data/captions.txt'
