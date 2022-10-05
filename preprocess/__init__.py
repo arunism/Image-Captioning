@@ -1,4 +1,3 @@
-from preprocess.text import CleanImageDescription
-from preprocess.dataset import ImageCaptionDataset
+from preprocess.clean import CleanImageDescription
 
-__all__ = ['CleanImageDescription', 'ImageCaptionDataset']
+__all__ = ['CleanImageDescription']

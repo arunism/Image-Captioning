@@ -2,7 +2,7 @@ import os
 from torch.utils.data import DataLoader
 
 import config
-from preprocess import ImageCaptionDataset
+from data import ImageCaptionDataset
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 

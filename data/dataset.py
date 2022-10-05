@@ -1,7 +1,7 @@
 import os
-from PIL import Image
 import torch
 from torch.utils.data import Dataset
+from torchvision.io import read_image
 from preprocess import CleanImageDescription
 import config
 
@@ -16,7 +16,7 @@ class ImageCaptionDataset(Dataset):
         self.captions = list(CleanImageDescription(self.captions_path).clean_descriptions().items())
 
     def __getitem__(self, idx):
-        image = os.path.join(self.images_dir, self.captions[idx][0])
+        image = read_image(os.path.join(self.images_dir, self.captions[idx][0]))
         image = self.transform(image) if self.transform else image
         captions = torch.LongTensor(self.captions[idx][1])
         return image, captions
