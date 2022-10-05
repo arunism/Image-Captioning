@@ -13,14 +13,13 @@ class ImageCaptionDataset(Dataset):
         self.transform = transform
         self.images_dir = os.path.join(BASE_DIR, config.IMAGE_DATA_PATH)
         self.captions_path = os.path.join(BASE_DIR, config.TEXT_DATA_PATH)
-        self.captions = CleanImageDescription(self.captions_path).clean_descriptions().items()
+        self.captions = list(CleanImageDescription(self.captions_path).clean_descriptions().items())
 
     def __getitem__(self, idx):
-        image = Image(os.path.join(self.images_dir, self.captions.iloc[idx, 0]))
+        image = os.path.join(self.images_dir, self.captions[idx][0])
         image = self.transform(image) if self.transform else image
-        captions = torch.LongTensor(self.captions.iloc[idx, 1])
-        print(image)
-        # print(captions)
+        captions = torch.LongTensor(self.captions[idx][1])
+        return image, captions
 
     def __len__(self):
         return len(self.captions)
