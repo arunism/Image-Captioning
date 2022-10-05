@@ -7,6 +7,7 @@ DROPOUT = 0.4
 OPTIMIZER = 'adam'  # Available: adam, adadelta, adagrad, rmsprop, sgd
 VOCAB_THRESHOLD = 1
 SEQUENCE_LENGTH = 50
+CLEAN_TEXT = True
 OUTPUT_PATH = 'results/'
 IMAGE_DATA_PATH = 'data/Images/'
 TEXT_DATA_PATH = 'data/captions.txt'

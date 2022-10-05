@@ -1,3 +1,4 @@
 from preprocess.clean import CleanImageDescription
+from preprocess.vocab import Vocab
 
-__all__ = ['CleanImageDescription']
+__all__ = ['CleanImageDescription', 'Vocab']
