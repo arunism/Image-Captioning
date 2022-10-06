@@ -39,5 +39,13 @@ class Vocab:
             for sequence in sequences
         ]
 
+    def vectorize_descriptions(self):
+        for filename, descriptions in self.descriptions.items():
+            self.descriptions[filename] = [
+                [self.w2i.get(word, self.w2i['<UNK>']) for word in description.split()]
+                for description in descriptions
+            ]
+            self.descriptions[filename] = self.padding(self.descriptions[filename])
+
     def __len__(self):
         return len(self.vocab)
