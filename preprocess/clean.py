@@ -15,10 +15,10 @@ class CleanImageDescription:
 
         descriptions = dict()
         for line in text.split('\n'):
-            if len(line) < 20:
-                continue
             tokens = line.split(',', 1)
             filename, desc = tokens[0], tokens[1:]
+            if not filename.endswith(('.jpg', '.jpeg', '.png')):
+                continue
             if filename not in descriptions:
                 descriptions[filename] = list()
             descriptions[filename].append(desc[0])
