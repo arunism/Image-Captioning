@@ -3,6 +3,7 @@ EPOCHS = 10
 BATCH_SIZE = 32
 EMBED_SIZE = 512
 HIDDEN_SIZE = 512
+NUM_LAYERS = 2
 DROPOUT = 0.4
 OPTIMIZER = 'adam'  # Available: adam, adadelta, adagrad, rmsprop, sgd
 VOCAB_THRESHOLD = 1
