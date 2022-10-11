@@ -28,7 +28,13 @@ class Trainer:
         return torch.optim.Adam(self.model.parameters(), lr=config.LR)
 
     def train_epoch(self, data_loader):
-        pass
+        for image, captions in data_loader:
+            image, captions = image.to(self.device), captions.to(self.device)
+            output = self.model(image, captions)
+            loss = self.criterion(output.reshape(-1, output.shape[2]), captions.reshape(-1))
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
     def train(self):
         transform = transforms.Compose([
