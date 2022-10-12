@@ -12,7 +12,7 @@ class ImageCaptionDataset(Dataset):
     def __init__(self, transform=None):
         self.transform = transform
         self.images_dir = os.path.join(BASE_DIR, config.IMAGE_DATA_PATH)
-        self.captions = list(Vocab().descriptions.items())
+        self.captions = Vocab().descriptions
 
     def __getitem__(self, idx):
         image = read_image(os.path.join(self.images_dir, self.captions[idx][0])).float()
