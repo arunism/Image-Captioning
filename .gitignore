@@ -3,6 +3,7 @@
 *.txt
 *.csv
 Images/
+results/
 
 # exclude data from source control by default
 tensorboard/
