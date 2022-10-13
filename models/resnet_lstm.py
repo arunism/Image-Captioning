@@ -26,8 +26,8 @@ class ResnetDecoder(nn.Module):
         self.dropout = nn.Dropout(config.DROPOUT)
 
     def forward(self, features, captions):
-        embeddings = self.dropout(self.embed(captions))
-        embeddings = torch.cat((features.unsqueeze(0), embeddings), dim=0)
+        embeddings = self.dropout(self.embed(captions[:, :-1]))
+        embeddings = torch.cat((features.unsqueeze(dim=1), embeddings), dim=1)
         hidden, _ = self.lstm(embeddings)
         output = self.fc(hidden)
         return output
