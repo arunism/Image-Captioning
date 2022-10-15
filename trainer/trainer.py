@@ -56,4 +56,5 @@ class Trainer:
         data = ImageCaptionDataset(transform=transform)
         data_loader = DataLoader(dataset=data, batch_size=config.BATCH_SIZE, shuffle=True)
         self.model.train()
-        self.train_epoch(data_loader)
+        for epoch in range(config.EPOCHS):
+            self.train_epoch(data_loader)
