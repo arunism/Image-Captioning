@@ -24,7 +24,7 @@ You can always step ahead and customize the project as you intend to.
 You need not struggle with the entire program to manage and modify it to your will.
 It can be done easily by looking into `config.py` file alone.
 
-`Note:` In some cases there are limited options to choose from.
+`Note:` In some cases there are limited options available to choose from.
 
 ## Procedure
 
